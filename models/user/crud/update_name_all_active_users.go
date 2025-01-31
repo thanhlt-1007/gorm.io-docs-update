@@ -4,13 +4,19 @@ import (
     "fmt"
     "github.com/thanhlt-1007/gorm.io-docs-update/models"
     "gorm.io/gorm"
+    "gorm.io/gorm/clause"
 )
 
 func UpdateNameAllActiveUsers(db *gorm.DB) {
     fmt.Println("\n---UpdateNameAllActiveUsers---")
     fmt.Println("Updating name all active users")
 
-    result := db.Model(&models.User{}).Where("active = ?", true).Update("name", "Active User")
+    var users []models.User
+    result := db.
+        Model(&users).
+        Clauses(clause.Returning{}).
+        Where("active = ?", true).
+        Update("name", "Active User")
     err := result.Error
 
     fmt.Println("\n---Result---")
@@ -23,4 +29,7 @@ func UpdateNameAllActiveUsers(db *gorm.DB) {
     }
 
     fmt.Println("Update users success")
+    for _, user := range users {
+        user.Println()
+    }
 }
