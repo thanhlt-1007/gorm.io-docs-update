@@ -11,4 +11,5 @@ func main() {
 
     user := UserCrud.CreateUser(db)
     UserCrud.UpdateUser(db, user)
+    UserCrud.UpdateNameAllActiveUsers(db)
 }
