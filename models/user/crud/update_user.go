@@ -6,15 +6,13 @@ import (
     "gorm.io/gorm"
 )
 
-func CreateUser(db *gorm.DB) models.User {
-    fmt.Println("\n---CreateUser---")
-    fmt.Println("Creating user")
+func UpdateUser(db *gorm.DB, user models.User) models.User {
+    fmt.Println("\n---UpdateUser---")
+    fmt.Println("Updating user")
 
-    user := models.User {
-        Name: "User",
-        Age: 18,
-    }
-    result := db.Create(&user)
+    user.Name = "Update User"
+    user.Age = 30
+    result := db.Save(&user)
     err := result.Error
 
     fmt.Println("\n---Result---")
@@ -22,11 +20,11 @@ func CreateUser(db *gorm.DB) models.User {
     fmt.Printf("Error: %v\n", err)
 
     if err != nil {
-        fmt.Printf("Create user error %v\n", err)
+        fmt.Printf("Update user error %v\n", err)
         panic(err)
     }
 
-    fmt.Println("Create user success")
+    fmt.Println("Update user success")
     user.Println()
 
     return user

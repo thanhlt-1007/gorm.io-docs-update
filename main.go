@@ -9,5 +9,6 @@ func main() {
     db := database.InitDB()
     defer database.CloseDB(db)
 
-    UserCrud.CreateUser(db)
+    user := UserCrud.CreateUser(db)
+    UserCrud.UpdateUser(db, user)
 }
