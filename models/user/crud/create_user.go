@@ -13,6 +13,7 @@ func CreateUser(db *gorm.DB) models.User {
     user := models.User {
         Name: "User",
         Age: 18,
+        Active: true,
     }
     result := db.Create(&user)
     err := result.Error
