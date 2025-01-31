@@ -5,5 +5,6 @@ import (
 )
 
 func main() {
-    database.InitDB()
+    db := database.InitDB()
+    database.CloseDB(db)
 }

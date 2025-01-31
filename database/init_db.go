@@ -7,7 +7,7 @@ import (
 )
 
 func InitDB() *gorm.DB {
-    fmt.Println("---InitDB---")
+    fmt.Println("\n---InitDB---")
     fmt.Println("Init DB opening gorm.sqlite")
     db, err := gorm.Open(
         sqlite.Open("gorm.sqlite"),
