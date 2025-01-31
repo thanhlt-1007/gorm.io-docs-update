@@ -13,4 +13,5 @@ func main() {
     UserCrud.UpdateUser(db, user)
     UserCrud.UpdateNameAllActiveUsers(db)
     UserCrud.UpdateNameActiveUser(db, user)
+    UserCrud.UpdateNameAndAgeActiveUser(db, user)
 }
